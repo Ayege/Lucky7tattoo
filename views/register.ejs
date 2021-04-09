@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resources/css/style.css">
+  <title>Register</title>
+</head>
+
+<body>
+  <div class="register-form">
+    <h1>Form Registration</h1>
+    <form action="/register" method="POST">
+      <label for="email">Email</label>
+      <input type="text" name="email" required tabindex="1" autofocus>
+
+      <label for="user">User</label>
+      <input type="text" name="user" required tabindex="2" autofocus>
+
+      <label for="name">Full Name</label>
+      <input type="text" name="name" required tabindex="3">
+
+      <label for="rol">Rol</label>
+      <select id="rol" name="rol" class="select-css" tabindex="4">
+        <option value="admin" selected>Admin</option>
+        <option value="data entry">Data Entry</option>
+      </select>
+      <br>
+      <label for="pass">Password</label>
+      <input type="password" name="pass" required tabindex="5">
+      <div style="display: inline;">
+        <a href="/" class="btn-cancel">Cancel</a><input type="submit" class="btn-save" value="Save">
+      </div>
+    </form>
+  </div>
+
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <% if (typeof alert != "undefined")  { %>
+  <script>
+    Swal.fire({
+      title: '<%= alertTitle %>',
+      text: '<%= alertMessage %>',
+      icon: '<%= alertIcon %>',
+      showConfirmButton: '<%= showConfirmButton %>',
+      timer: '<%= timer %>'
+ }).then(() => {
+        window.location = '/<%= ruta %>'
+      })
+  </script>
+  <% } %>
+  </div>
+</body>
+
+</html>
