@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>About Us - Brand</title>
+    <title>Payment - Brand</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css?h=2b729b2c3e6a9d1b1f45bbd49788459a">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=UnifrakturCook:">
@@ -34,67 +34,58 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="/Gallery.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../login.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;border-color: #F5D10D;">Sign UP</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../login.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Log In</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../contact-us.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gallery.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;border-color: #F5D10D;">Sign UP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Log In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact-us.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <main class="page">
-        <section>
-            <section class="clean-block clean-info dark" style="background: rgb(0,0,0);color: rgb(0,0,0);">
-                <div class="container">
-                    <div class="block-heading">
-                        <h2 class="text-info">Info</h2>
-                        <p style="color: rgb(255,255,255);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+    <main class="page payment-page">
+        <section class="clean-block payment-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Payment</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                </div>
+                <form>
+                    <div class="products">
+                        <h3 class="title">Checkout</h3>
+                        <div class="item"><span class="price">$200</span>
+                            <p class="item-name">Product 1</p>
+                            <p class="item-description">Lorem ipsum dolor sit amet</p>
+                        </div>
+                        <div class="item"><span class="price">$120</span>
+                            <p class="item-name">Product 2</p>
+                            <p class="item-description">Lorem ipsum dolor sit amet</p>
+                        </div>
+                        <div class="total"><span>Total</span><span class="price">$320</span></div>
                     </div>
-                    <div class="row align-items-center">
-                        <div class="col-md-6"><img class="img-thumbnail" data-aos="fade-right" data-aos-duration="800" src="/assets/img/scenery/Daniel.jpeg?h=0ea3c50f978a6bcf4faa8e76e24de909"></div>
-                        <div class="col-md-6">
-                            <h3 style="color: rgb(255,255,255);">Lorem impsum dolor sit amet</h3>
-                            <div class="getting-started-info">
-                                <p style="color: rgb(255,255,255);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div><button class="btn btn-outline-primary btn-lg" type="button">Join Now</button>
+                    <div class="card-details">
+                        <h3 class="title">Credit Card Details</h3>
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="mb-3"><label class="form-label" for="card_holder">Card Holder</label><input class="form-control" type="text" id="card_holder" placeholder="Card Holder" name="card_holder"></div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mb-3"><label class="form-label">Expiration date</label>
+                                    <div class="input-group expiration-date"><input class="form-control" type="text" placeholder="MM" name="expiration_month"><input class="form-control" type="text" placeholder="YY" name="expiration_year"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="mb-3"><label class="form-label" for="card_number">Card Number</label><input class="form-control" type="text" id="card_number" placeholder="Card Number" name="card_number"></div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-3"><label class="form-label" for="cvc">CVC</label><input class="form-control" type="text" id="cvc" placeholder="CVC" name="cvc"></div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Proceed</button></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <section class="clean-block clean-info dark" style="background: rgb(0,0,0);">
-                <div class="container">
-                    <div class="block-heading">
-                        <h2 class="text-info">Info</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <h3 style="color: #ffffff;">Lorem impsum dolor sit amet</h3>
-                            <div class="getting-started-info">
-                                <p style="color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div><button class="btn btn-outline-primary btn-lg" type="button" style="color: #ffffff;">Join Now</button>
-                        </div>
-                        <div class="col-md-6"><img class="img-thumbnail" data-aos="fade-left" data-aos-duration="800" src="/assets/img/scenery/Mariana.jpeg?h=d538ae9d2ccfdea36f038eaebb9feeae"></div>
-                    </div>
-                </div>
-            </section>
-            <section class="clean-block clean-info dark" style="background: rgb(0,0,0);">
-                <div class="container">
-                    <div class="block-heading">
-                        <h2 class="text-info">Info</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-md-6"><img class="img-thumbnail" data-aos="fade-right" data-aos-duration="800" src="/assets/img/scenery/Rachel.jpeg?h=a85a9abcc5a1312f21847d279b435cc6"></div>
-                        <div class="col-md-6">
-                            <h3 style="color: rgb(255,255,255);">Lorem impsum dolor sit amet</h3>
-                            <div class="getting-started-info">
-                                <p style="color: rgb(255,255,255);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div><button class="btn btn-outline-primary btn-lg" type="button">Join Now</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </form>
+            </div>
         </section>
     </main><!-- Start: Footer Dark -->
     <footer class="page-footer dark">
