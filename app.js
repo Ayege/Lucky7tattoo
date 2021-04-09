@@ -25,7 +25,10 @@ app.use(session({
 const connection = require('./database/db');
 
 app.get('/register', (req, res)=> {
-    res.render('register');
+	res.render('register');
+})
+app.get('/signup', (req, res)=> {
+	res.render('signup');
 })
 app.get('/login', (req, res)=> {
     res.render('login');

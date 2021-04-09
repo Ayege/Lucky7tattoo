@@ -6,7 +6,7 @@ To run file just incert into console:
 
 npm install
 
-set your mySQL settings , can use any DB Manager, i used XAMPP to open myPHPadmin.
+set your mySQL settings creating a dotenv file, can use any DB Manager, i used XAMPP to open myPHPadmin.
 
 npm run dev
 
