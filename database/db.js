@@ -1,17 +1,23 @@
+const util = require('util');
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'luckydb'
 });
 
-connection.connect((error)=>{
-    if(error){
-        console.log('ERROR CONNECTING TO DATABASE, ERROR IS: '+error);
-        return;
+pool.getConnection((err, connection) => {
+    if(err){
+        console.error("ERROR CONNECTING TO DATABASE: "+err);
     }
-    console.log('CONNECTED TO DATABASE');
+    if(connection)
+        connection.release();
+        console.log('CONNECTED TO DATABASE')
+    return;
 });
-module.exports = connection;
+
+pool.query = util.promisify(pool.query);
+
+module.exports = pool;
