@@ -136,10 +136,10 @@ router.post('/send', (req, res) => {
             console.log('Message sent: %s', info.messageId);
             // Preview only available when sending through an Ethereal account
             console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+            res.redirect('/contact-us');
         });
     });
-    res.redirect('/');
-
 });
 //--------- END CONTACT US -------------
 router.get('/about-us', (req, res) => {
