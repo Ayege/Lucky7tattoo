@@ -7,7 +7,7 @@ const user = new User();
 router.get('/', (req, res)=> {
     let user = req.session.user;
     if(user){
-        res.redirect('/home');
+        res.redirect('/');
         return;
     }
     res.render('index');
@@ -17,7 +17,8 @@ router.get('/home', (req, res, next) => {
     let user = req.session.user;
 
     if(user) {
-        res.render('home', {opp:req.session.opp, name:user.name});
+        // Sent to home to display name 
+        res.render('/home', {opp:req.session.opp, name:user.name, middlename:user.middlename});
         return;
     }
     res.redirect('/');
@@ -41,12 +42,15 @@ router.post('/signup', (req, res, next) => {
             user.find(lastId, function(result) {
                 req.session.user = result;
                 req.session.opp = 0;
-                res.redirect('/login');
+                res.redirect('/');
+
             });
-                res.send('Welcome '+ userInput.name)
+                
         }else {
             console.log('Error creating a new user ...');
+            res.redirect('/');
         }
+        return;
     });
 
 });
@@ -55,7 +59,7 @@ router.get('/login', (req, res)=> {
     res.render('login');
 });
 // POST LOGIN DATA
-router.post('/login', (req, res)=>{
+router.post('/login', (req, res, next)=>{
     user.login(req.body.username, req.body,password, function(result){
         if(result){
             req.session.user = result;
@@ -105,9 +109,6 @@ router.get('/payment-page', (req, res)=> {
     res.render('payment-page');
 });
 // --------- END OF PAYMENT PAGES ----------
-router.get('/register', (req, res)=> {
-	res.render('register');
-});
 
 
 module.exports = router;

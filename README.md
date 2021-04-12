@@ -6,7 +6,19 @@ To run file just incert into console:
 
 npm install
 
-set your mySQL settings creating a dotenv file, can use any DB Manager, i used XAMPP to open myPHPadmin.
+set your mySQL settings creating a keys.js file like this:
+
+module.exports = {
+
+    database: {
+        connectionLimit: 10,
+        host: 'your_host',
+        user: 'your_username',
+        password: 'your_password',
+        database: 'database_name'
+    }
+
+};
 
 npm run dev
 

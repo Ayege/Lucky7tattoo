@@ -4,12 +4,14 @@ const session = require('express-session');
 const path = require('path');
 const pageRouter = require('./routes/pages');
 
+const { database } = require('./database/keys');
+
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 app.use('/resources', express.static('public'));
 app.use('/resources', express.static(__dirname + '/public'));
-
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -36,8 +38,8 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(3000, (req, res)=>{
-    console.log('SERVER RUNNING IN http://localhost:3000');
+app.listen(app.get('port'), ()=>{
+    console.log('SERVER RUNNING IN http://localhost:'+app.get('port'));
 })
 
 module.exports = app;
