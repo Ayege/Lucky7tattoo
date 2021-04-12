@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Payment - Brand</title>
+    <title>Slider - Brand</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css?h=dcf4e45722a88376fc2b9bea51dbb9bc">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=UnifrakturCook:">
@@ -33,7 +33,7 @@
         <div class="container"><a class="navbar-brand" href="index.html" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;text-align: justify;font-size: 30px;font-weight: normal;">Lucky7Tattoo</a><button data-bs-toggle="collapse" class="navbar-toggler text-dark" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(0,0,0);font-size: 12.8px;">
                 <ul class="navbar-nav ms-auto" style="color: #F5D10D;">
-                    <li class="nav-item"><a class="nav-link" href="Galeria/Gallery.html" style="color: #F5D10D;font-family: Montserrat, sans-serif;font-weight: bold;">GALLERY</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Galeria/Gallery.html" style="color: #F5D10D;font-family: Montserrat, sans-serif;font-weight: bold;">GALLERY</a></li>
                     <li class="nav-item"><a class="nav-link" href="Shop/catalog-page.html" style="color: #F5D10D;font-weight: bold;font-family: Montserrat, sans-serif;">SHOP</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact-us.html" style="color: #F5D10D;font-weight: bold;font-family: Montserrat, sans-serif;">CONTACT US</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.html" style="color: #F5D10D;font-weight: bold;font-family: Montserrat, sans-serif;">LOG IN</a></li>
@@ -41,50 +41,20 @@
             </div>
         </div>
     </nav><!-- End: Navigation Clean -->
-    <main class="page payment-page">
-        <section class="clean-block payment-form dark" style="background: rgb(0,0,0);">
+    <main class="page">
+        <!-- Start: ♣ Filterable Gallery with Lightbox BS4 ♣ -->
+        <section class="py-5" style="background: rgb(0,0,0);">
             <div class="container">
-                <div class="block-heading">
-                    <h1 class="display-3" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Payment</h1>
+                <h1 class="display-1 text-center" style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Galleria de Lucky7</h1><!-- Start: filter controls -->
+                <div class="filtr-controls"><span class="active" data-filter="all" style="color: #f5d10d;text-align: center;font-family: Montserrat, sans-serif;"><a href="/Galeria/Gallery.html" style="color: #F5D10D;font-family: Montserrat, sans-serif;border-style: none;">all</a></span><span data-filter="1" style="color: #f5d10d;text-align: center;font-family: Montserrat, sans-serif;"><a href="/Galeria/Gallery_Daniel.html" style="color: #F5D10D;">DANIEL</a></span><span data-filter="2" style="color: #f5d10d;text-align: center;font-family: Montserrat, sans-serif;"><a href="/Galeria/Gallery_Marianna.html" style="color: #F5D10D;">MARIANNA</a></span><span data-filter="3" style="color: #f5d10d;text-align: center;font-family: Montserrat, sans-serif;"><a href="/Galeria/Gallery_Bridgette.html" style="color: #F5D10D;">BRIDGETTE</a></span></div><!-- End: filter controls -->
+                <div class="row filtr-container">
+                    <div class="col-sm-6 col-md-4 col-lg-3 filtr-item" data-category="1, 3"><img class="img-fluid" src="/assets/img/avatars/Daniel.jpeg?h=2bdf70d84d8afb9e3ad7fd4e5c195aa0"><img class="img-fluid" src="/assets/img/Tatuajes/sirenita%20marianna.jpg?h=e0b047b294ec4e82432d7ea3bf67f127"></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 filtr-item" data-category="2"><img class="img-fluid" src="/assets/img/Tatuajes/el%20diablo,%20andy.jpg?h=3b4190b43c0e75972b084520d2f2af33"><img class="img-fluid" src="/assets/img/Tatuajes/TIGRE%20MARIANA.jpg?h=79cc295f67c4b988086ef3855f3dff48"></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 filtr-item" data-category="1, 3"><img class="img-fluid" src="/assets/img/Tatuajes/ELEFANTE%20DANIEL.jpg?h=508e749a88c4df5590b89fbca60dc3f7"><img class="img-fluid" src="/assets/img/Tatuajes/CALAVERA%20DANIEL.jpg?h=b170c10160f3b5f63f0c2b8ce6aa9172"></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 filtr-item" data-category="2, 3"><img class="img-fluid" src="/assets/img/Tatuajes/SAMURAI%20-%20DANIEL.jpg?h=fc45d102f432632526d8a8039568391d"></div>
                 </div>
-                <form>
-                    <div class="products">
-                        <h3 class="title">Checkout</h3>
-                        <div class="item"><span class="price">$200</span>
-                            <p class="item-name">Product 1</p>
-                            <p class="item-description">Lorem ipsum dolor sit amet</p>
-                        </div>
-                        <div class="item"><span class="price">$120</span>
-                            <p class="item-name">Product 2</p>
-                            <p class="item-description">Lorem ipsum dolor sit amet</p>
-                        </div>
-                        <div class="total"><span>Total</span><span class="price">$320</span></div>
-                    </div>
-                    <div class="card-details">
-                        <h3 class="title">Credit Card Details</h3>
-                        <div class="row">
-                            <div class="col-sm-7">
-                                <div class="mb-3"><label class="form-label" for="card_holder">Card Holder</label><input class="form-control" type="text" id="card_holder" placeholder="Card Holder" name="card_holder"></div>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="mb-3"><label class="form-label">Expiration date</label>
-                                    <div class="input-group expiration-date"><input class="form-control" type="text" placeholder="MM" name="expiration_month"><input class="form-control" type="text" placeholder="YY" name="expiration_year"></div>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="mb-3"><label class="form-label" for="card_number">Card Number</label><input class="form-control" type="text" id="card_number" placeholder="Card Number" name="card_number"></div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="mb-3"><label class="form-label" for="cvc">CVC</label><input class="form-control" type="text" id="cvc" placeholder="CVC" name="cvc"></div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: #F5D10D;color: rgb(0,0,0);font-family: Montserrat, sans-serif;">Proceed</button></div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
             </div>
-        </section>
+        </section><!-- End: ♣ Filterable Gallery with Lightbox BS4 ♣ -->
     </main><!-- Start: Footer Basic -->
     <footer class="footer-basic" style="background: rgb(33,37,41);">
         <!-- Start: Social Icons -->
@@ -92,7 +62,7 @@
         <!-- Start: Links -->
         <ul class="list-inline">
             <li class="list-inline-item"><a href="/index.html" style="font-family: Montserrat, sans-serif;color: #F5D10D;">Home</a></li>
-            <li class="list-inline-item"><a href="Gallery.html" style="font-family: Montserrat, sans-serif;color: #F5D10D;">Gallery</a></li>
+            <li class="list-inline-item"><a href="/Galeria/Gallery.html" style="font-family: Montserrat, sans-serif;color: #F5D10D;">Gallery</a></li>
             <li class="list-inline-item" style="font-family: Montserrat, sans-serif;"><a href="/Shop/catalog-page.html" style="font-family: Montserrat, sans-serif;color: #F5D10D;">Shop</a></li>
             <li class="list-inline-item"><a href="/contact-us.html" style="font-family: Montserrat, sans-serif;color: #F5D10D;">Contact Us</a></li>
         </ul><!-- End: Links -->
