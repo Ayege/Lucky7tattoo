@@ -82,14 +82,17 @@ router.get('/loggout', (req, res, next) => {
 
 // --------- END OF LOGIN SYSTEM -----
 // --------- START OF SECONDARY PAGES -------
+// --------- START CONTACT US -------------
+router.get('/contact-us', (req, res)=>{
+    res.render('contact-us');
+});
+
+//--------- END CONTACT US -------------
 router.get('/about-us', (req, res)=>{
     res.render('about-us');
 });
 router.get('/features', (req, res)=>{
     res.render('features');
-});
-router.get('/contact-us', (req, res)=>{
-    res.render('contact-us');
 });
 router.get('/gallery', (req, res)=>{
     res.render('gallery');

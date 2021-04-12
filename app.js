@@ -3,16 +3,23 @@ const app = express();
 const session = require('express-session');
 const path = require('path');
 const pageRouter = require('./routes/pages');
+const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
+const nodemailer = require('nodemailer');
+
 
 const { database } = require('./database/keys');
 
-app.use(express.urlencoded({extended:false}));
-app.use(express.json());
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 app.use('/resources', express.static('public'));
-app.use('/resources', express.static(__dirname + '/public'));
+app.use('/resources', express.static(path.join(__dirname, '/public')));
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
+
+app.engine('handlebars', exphbs());
 app.set('view engine', 'ejs');
 
 app.use(session({
