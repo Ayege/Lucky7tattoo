@@ -70,8 +70,9 @@ router.post('/login', (req, res, next) => {
             loggeduser = (result);
             res.redirect('/home');
         } else {
-            //res.send('<script>alert("Username or Password Incorrect!")</script>');
-            res.json({success: true})
+            res.send('<script>alert("Username or Password Incorrect!")</script>');
+            //res.json({success: true})
+            
         }
     })
 
