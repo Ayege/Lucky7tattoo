@@ -9,7 +9,7 @@ let loggeduser = "";
 router.get('/', (req, res) => {
     let user = req.session.user;
     if (user) {
-        res.redirect('/');
+        res.redirect('/home');
         return;
     }
     res.render('index');
@@ -58,6 +58,13 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res) => {
+    let user = req.session.user;
+
+    if (user) {
+        // Sent to home to display name 
+        res.render('home', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
+        return;
+    }
     res.render('login');
 });
 // POST LOGIN DATA
@@ -147,11 +154,15 @@ router.post('/send', (req, res) => {
     });
 });
 //--------- END CONTACT US -------------
-router.get('/about-us', (req, res) => {
-    res.render('about-us');
-});
-router.get('/features', (req, res) => {
-    res.render('features');
+router.get('/faq', (req, res) => {
+    let user = req.session.user;
+
+    if (user) {
+        // Sent to home to display name 
+        res.render('faq', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
+        return;
+    }
+    res.render('faq');
 });
 router.get('/gallery', (req, res) => {
     res.render('gallery');
@@ -161,14 +172,26 @@ router.get('/gallery', (req, res) => {
 router.get('/catalog-page', (req, res) => {
     res.render('catalog-page');
 });
-router.get('/product-page', (req, res) => {
-    res.render('product-page');
-});
 router.get('/shopping-cart', (req, res) => {
     res.render('shopping-cart');
 });
 router.get('/payment-page', (req, res) => {
     res.render('payment-page');
+});
+router.get('/product-page-cuidado-tats', (req, res) => {
+    res.render('product-page-cuidado-tats');
+});
+router.get('/product-page-targeta', (req, res) => {
+    res.render('product-page-targeta');
+});
+router.get('/gallery_Daniel', (req, res) => {
+    res.render('gallery_Daniel');
+});
+router.get('/gallery_Marianna', (req, res) => {
+    res.render('gallery_Marianna');
+});
+router.get('/gallery_Brigitte', (req, res) => {
+    res.render('gallery_Brigitte');
 });
 // --------- END OF PAYMENT PAGES ----------
 
