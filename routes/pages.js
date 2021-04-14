@@ -61,7 +61,7 @@ router.get('/login', (req, res) => {
 });
 // POST LOGIN DATA
 router.post('/login', (req, res, next) => {
-    user.login(req.body.username, req.body, password, function (result) {
+    user.login(req.body.username, req.body.password, function (result) {
         if (result) {
             req.session.user = result;
             req.session.opp = 1;

@@ -14,7 +14,7 @@ User.prototype = {
 
 
         pool.query(sql, user, function(err, result) {
-            if(err) throw err
+            if(err) throw err;
 
             if(result.length) {
                 callback(result[0]);
