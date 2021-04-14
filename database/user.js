@@ -45,7 +45,7 @@ User.prototype = {
     {
         this.find(username, function(user) {
             if(user) {
-                if(password = user.password) {
+                if(password == user.password) {
                     callback(user);
                     return;
                 }  

@@ -20,7 +20,7 @@ router.get('/home', (req, res, next) => {
 
     if (user) {
         // Sent to home to display name 
-        res.render('home', { opp: req.session.opp, name: loggeduser, middlename: user.middlename });
+        res.render('home', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
         return;
     }
     res.redirect('/');
@@ -39,12 +39,12 @@ router.post('/signup', (req, res, next) => {
         username: req.body.username,
         password: req.body.password
     };
-    user.create(userInput, function (lastId) {
+     user.create(userInput, function (lastId) {
         if (lastId) {
             user.find(lastId, function (result) {
                 req.session.user = result;
                 req.session.opp = 0;
-                //res.redirect('/');
+                res.render('login');
 
             });
 
@@ -67,11 +67,11 @@ router.post('/login', (req, res, next) => {
         if (result) {
             req.session.user = result;
             req.session.opp = 1;
-            loggeduser = req.session.user.name;
-            console.log(loggeduser);
+            loggeduser = (result);
             res.redirect('/home');
         } else {
-            res.send('Username or Password Incorrect!');
+            //res.send('<script>alert("Username or Password Incorrect!")</script>');
+            res.json({success: true})
         }
     })
 
