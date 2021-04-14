@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const User = require('../database/user');
 
 const user = new User();
+let loggeduser = "";
 
 router.get('/', (req, res) => {
     let user = req.session.user;
@@ -19,7 +20,7 @@ router.get('/home', (req, res, next) => {
 
     if (user) {
         // Sent to home to display name 
-        res.render('/home', { opp: req.session.opp, name: user.name, middlename: user.middlename });
+        res.render('home', { opp: req.session.opp, name: loggeduser, middlename: user.middlename });
         return;
     }
     res.redirect('/');
@@ -43,7 +44,7 @@ router.post('/signup', (req, res, next) => {
             user.find(lastId, function (result) {
                 req.session.user = result;
                 req.session.opp = 0;
-                res.redirect('/');
+                //res.redirect('/');
 
             });
 
@@ -60,11 +61,14 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 // POST LOGIN DATA
+
 router.post('/login', (req, res, next) => {
     user.login(req.body.username, req.body.password, function (result) {
         if (result) {
             req.session.user = result;
             req.session.opp = 1;
+            loggeduser = req.session.user.name;
+            console.log(loggeduser);
             res.redirect('/home');
         } else {
             res.send('Username or Password Incorrect!');

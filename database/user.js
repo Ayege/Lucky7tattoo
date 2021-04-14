@@ -28,7 +28,7 @@ User.prototype = {
     {
 
         var pwd = body.password;
-        body.password = bcrypt.hashSync(pwd,10);
+        //body.password = bcrypt.hashSync(pwd,10);
 
         var bind = [];
         for(prop in body){
@@ -45,7 +45,7 @@ User.prototype = {
     {
         this.find(username, function(user) {
             if(user) {
-                if(bcrypt.compareSync(password, user.password)) {
+                if(password = user.password) {
                     callback(user);
                     return;
                 }  
