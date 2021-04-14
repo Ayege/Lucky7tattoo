@@ -146,11 +146,8 @@ router.post('/send', (req, res) => {
     });
 });
 //--------- END CONTACT US -------------
-router.get('/about-us', (req, res) => {
-    res.render('about-us');
-});
-router.get('/features', (req, res) => {
-    res.render('features');
+router.get('/faq', (req, res) => {
+    res.render('faq');
 });
 router.get('/gallery', (req, res) => {
     res.render('gallery');
@@ -168,6 +165,12 @@ router.get('/shopping-cart', (req, res) => {
 });
 router.get('/payment-page', (req, res) => {
     res.render('payment-page');
+});
+router.get('/product-page-cuidado-tats', (req, res) => {
+    res.render('product-page-cuidado-tats');
+});
+router.get('/product-page-targeta', (req, res) => {
+    res.render('product-page-targeta');
 });
 // --------- END OF PAYMENT PAGES ----------
 
