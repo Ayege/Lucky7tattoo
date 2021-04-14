@@ -172,15 +172,6 @@ router.get('/product-page-cuidado-tats', (req, res) => {
 router.get('/product-page-targeta', (req, res) => {
     res.render('product-page-targeta');
 });
-router.get('/gallery_Daniel', (req, res) => {
-    res.render('gallery_Daniel');
-});
-router.get('/gallery_Marianna', (req, res) => {
-    res.render('gallery_Marianna');
-});
-router.get('/gallery_Brigitte', (req, res) => {
-    res.render('gallery_Brigitte');
-});
 // --------- END OF PAYMENT PAGES ----------
 
 
