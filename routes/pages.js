@@ -86,7 +86,8 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
     if (req.session.user) {
         req.session.destroy(function () {
-            res.redirect('/');
+            res.send('Logged Out.');
+            //res.redirect('/');
         });
     }
 });
