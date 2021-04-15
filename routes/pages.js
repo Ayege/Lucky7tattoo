@@ -25,6 +25,7 @@ router.get('/home', (req, res, next) => {
     }
     res.redirect('/');
 });
+
 // --------- START OF LOGIN SYSTEM ----
 router.get('/signup', (req, res) => {
     res.render('signup');
@@ -153,9 +154,24 @@ router.get('/gallery', (req, res) => {
     res.render('gallery');
 });
 // --------- END OF SECONDARY PAGES -------
+//-----------STORE LOG IN REROUTING-----------
+router.get('/home', (req, res, next) => {
+    let user = req.session.user;
+
+    if (user) {
+        // Sent to home to display name 
+        res.render('home', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
+        return;
+    }
+    res.redirect('/');
+});
+//----------STORE LOGIN END-----------------
 // ---------- START OF PAYMENT PAGES ---------
 router.get('/catalog-page', (req, res) => {
     res.render('catalog-page');
+});
+router.get('/store', (req, res) => {
+    res.render('store');
 });
 router.get('/product-page', (req, res) => {
     res.render('product-page');
