@@ -1,0 +1,44 @@
+<%- include('partials/_header') -%>
+    <main class="page login-page">
+        <section class="clean-block clean-form dark" style="background: rgb(0,0,0);">
+            <div class="container" style="font-family: UnifrakturMaguntia, cursive;">
+                <div class="block-heading" style="color: #F5D10D;">
+                    <h2 style="/*color: #f5d10d;*/font-family: UnifrakturMaguntia, cursive;/*border-color: #f5d10d;*/">Sign Up</h2>
+                </div>
+                <form action="/signup" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label" for="name" style="font-family: UnifrakturMaguntia, cursive;font-size: 30px;">Nombre</label>
+                        <input class="form-control item" type="text" id="name" name="name" placeholder="Nombre" required tabindex="1" autofocu>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="middlename" style="font-family: UnifrakturMaguntia, cursive;font-size: 30px;">Apellido</label>
+                        <input class="form-control item" type="text" id="middlename" name="middlename" placeholder="Apellido" required tabindex="2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="phone" style="font-family: UnifrakturMaguntia, cursive;font-size: 30px;">Teléfono</label>
+                        <input class="form-control item" type="text" id="phone" name="phone" placeholder="Teléfono" required tabindex="3">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="email" style="font-family: UnifrakturMaguntia, cursive;font-size: 30px;">Email</label>
+                        <input class="form-control item" type="email" id="email-1" name="email" placeholder="Email" required tabindex="4">
+                    </div>
+                    <div class="mb-3">
+                            <label class="form-label" for="username" style="font-family: UnifrakturMaguntia, cursive;font-size: 30px;">Usuario</label>
+                            <input class="form-control item" type="text" id="username" name="username" placeholder="Nombre de Usuario" required tabindex="5">
+                        </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password" style="font-family: UnifrakturMaguntia, cursive;font-size: 30px;">Password</label>
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Password" required tabindex="6">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password" style="font-family: UnifrakturMaguntia, cursive;font-size: 30px;">Confirm Password</label>
+                        <input class="form-control" type="password" id="confirm-password" name="confirm-password" placeholder="Re-type Password" required tabindex="7">
+                    </div>
+                    <div class="mb-3">
+                            <button class="btn btn-primary" type="submit" value="Save">Sign Up</button><a href="/" class="btn btn-primary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <%- include('partials/_footer') -%>
