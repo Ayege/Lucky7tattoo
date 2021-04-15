@@ -77,15 +77,14 @@ router.post('/login', (req, res, next) => {
             loggeduser = (result);
             res.redirect('/home');
         } else {
-            res.send('<script>alert("Username or Password Incorrect!")</script>');
-            //res.json({success: true})
+            res.send('User Not found or Credentials Incorrect.');
             
         }
     })
 
 });
 
-router.get('/loggout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
     if (req.session.user) {
         req.session.destroy(function () {
             res.redirect('/');
