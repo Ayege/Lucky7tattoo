@@ -5,6 +5,7 @@ const path = require('path');
 const pageRouter = require('./routes/pages');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const flash = require('connect-flash');
 const morgan = require('morgan');
 
 const { database } = require('./database/keys');
@@ -30,6 +31,8 @@ app.use(session({
         maxAge: 60 * 1000 * 30
     }
 }));
+app.use(flash());
+
 
 app.use('/', pageRouter);
 
