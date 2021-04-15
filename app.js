@@ -5,10 +5,8 @@ const path = require('path');
 const pageRouter = require('./routes/pages');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const flash = require('connect-flash');
 const morgan = require('morgan');
 
-const { database } = require('./database/keys');
 
 //app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -31,8 +29,6 @@ app.use(session({
         maxAge: 60 * 1000 * 30
     }
 }));
-app.use(flash());
-
 
 app.use('/', pageRouter);
 
@@ -47,9 +43,10 @@ app.use((err, req, res, next) => {
     res.send(err.message);
 });
 
-
-app.listen(app.get('port'), ()=>{
-    console.log('SERVER RUNNING IN http://localhost:'+app.get('port'));
-})
+app.listen(process.env.PORT || 3000);
+//
+//app.listen(app.get('port'), ()=>{
+//    console.log('SERVER RUNNING IN http://localhost:'+app.get('port'));
+//})
 
 module.exports = app;
