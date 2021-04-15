@@ -1,5 +1,5 @@
 const pool = require('./db');
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 
 function User() {};
@@ -27,7 +27,7 @@ User.prototype = {
     create : function(body, callback) 
     {
 
-        //var pwd = body.password;
+        var pwd = body.password;
         //body.password = bcrypt.hashSync(pwd,10);
 
         var bind = [];

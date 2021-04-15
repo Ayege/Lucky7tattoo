@@ -4,17 +4,17 @@
   "description": "Lucky7Project\r This proyect was made with Node.js, Express.js, Bootstrap 5, mySQL, XAMPP, Visual Studio Code.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "JorgeOrtiz",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.1",
+    "connect-flash": "^0.1.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.0",
@@ -23,9 +23,6 @@
     "mysql": "^2.18.1",
     "nodemailer": "^6.5.0",
     "util.promisify": "^1.1.1"
-  },
-  "engines": {
-    "node": "15.12.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

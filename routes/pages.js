@@ -61,6 +61,7 @@ router.get('/login', (req, res) => {
     let user = req.session.user;
 
     if (user) {
+        // Sent to home to display name 
         res.render('home', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
         return;
     }
@@ -76,18 +77,18 @@ router.post('/login', (req, res, next) => {
             loggeduser = (result);
             res.redirect('/home');
         } else {
-            res.send('User Not found or Credentials Incorrect.');
+            res.send('<script>alert("Username or Password Incorrect!")</script>');
+            //res.json({success: true})
             
         }
     })
 
 });
 
-router.get('/logout', (req, res, next) => {
+router.get('/loggout', (req, res, next) => {
     if (req.session.user) {
         req.session.destroy(function () {
-            res.send('Logged Out.');
-            //res.redirect('/');
+            res.redirect('/');
         });
     }
 });
@@ -96,12 +97,6 @@ router.get('/logout', (req, res, next) => {
 // --------- START OF SECONDARY PAGES -------
 // --------- START CONTACT US -------------
 router.get('/contact-us', (req, res) => {
-    let user = req.session.user;
-
-    if (user) {
-        res.render('contact-us-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
     res.render('contact-us');
 });
 router.post('/send', (req, res) => {
@@ -163,82 +158,42 @@ router.get('/faq', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('faq-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
+        // Sent to home to display name 
+        res.render('faq', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
         return;
     }
     res.render('faq');
 });
 router.get('/gallery', (req, res) => {
-    let user = req.session.user;
-
-    if (user) {
-        res.render('gallery-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
     res.render('gallery');
 });
 // --------- END OF SECONDARY PAGES -------
 // ---------- START OF PAYMENT PAGES ---------
 router.get('/catalog-page', (req, res) => {
-    let user = req.session.user;
-
-    if (user) {
-        res.render('catalog-page-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
     res.render('catalog-page');
 });
-router.get('/product-page-cuidado-tats', (req, res) => {
-    let user = req.session.user;
-
-    if (user) {
-        res.render('product-page-cuidado-tats-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
-    res.render('product-page-cuidado-tats');
+router.get('/store', (req, res) => {
+    res.render('store');
 });
-router.get('/product-page-targeta', (req, res) => {
-    let user = req.session.user;
-
-    if (user) {
-        res.render('product-page-targeta-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
-    res.render('product-page-targeta');
-});
-//----- por quitar shopping cart y payment page ---------
 router.get('/shopping-cart', (req, res) => {
     res.render('shopping-cart');
 });
 router.get('/payment-page', (req, res) => {
     res.render('payment-page');
 });
-// ------------------------------------
+router.get('/product-page-cuidado-tats', (req, res) => {
+    res.render('product-page-cuidado-tats');
+});
+router.get('/product-page-targeta', (req, res) => {
+    res.render('product-page-targeta');
+});
 router.get('/gallery_Daniel', (req, res) => {
-    let user = req.session.user;
-
-    if (user) {
-        res.render('gallery-Daniel-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
     res.render('gallery_Daniel');
 });
 router.get('/gallery_Marianna', (req, res) => {
-    let user = req.session.user;
-
-    if (user) { 
-        res.render('gallery-Marianna-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
     res.render('gallery_Marianna');
 });
 router.get('/gallery_Brigitte', (req, res) => {
-    let user = req.session.user;
-
-    if (user) {
-        res.render('gallery-Brigitte-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
     res.render('gallery_Brigitte');
 });
 // --------- END OF PAYMENT PAGES ----------
