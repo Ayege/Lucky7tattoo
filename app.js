@@ -44,9 +44,10 @@ app.use((err, req, res, next) => {
     res.send(err.message);
 });
 
-
-app.listen(app.get('port'), ()=>{
-    console.log('SERVER RUNNING IN http://localhost:'+app.get('port'));
-})
+app.listen(process.env.PORT || 3000);
+//
+//app.listen(app.get('port'), ()=>{
+//    console.log('SERVER RUNNING IN http://localhost:'+app.get('port'));
+//})
 
 module.exports = app;
