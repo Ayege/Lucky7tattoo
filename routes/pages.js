@@ -172,6 +172,9 @@ router.get('/gallery', (req, res) => {
 router.get('/catalog-page', (req, res) => {
     res.render('catalog-page');
 });
+router.get('/store', (req, res) => {
+    res.render('store');
+});
 router.get('/shopping-cart', (req, res) => {
     res.render('shopping-cart');
 });
