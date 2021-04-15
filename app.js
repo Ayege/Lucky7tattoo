@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const morgan = require('morgan');
 
-const { database } = require('./database/keys');
 
 //app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
