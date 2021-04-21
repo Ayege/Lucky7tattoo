@@ -1,38 +1,5 @@
 <h1>Welcome to the Admin Dashboard</h1>
-<div class="table-data">
-    <h2>Tabla Usuarios</h2>
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Middlename</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Username</th>
-            <th></th>
-            <th></th>
-        </tr>
 
-        <%
-            if(userData.length!=0){
-            userData.forEach(function(data){
-            %>
-        <tr>
-            <td><%= data.name %></td>
-            <td><%= data.middlename %></td>
-            <td><%= data.phone %></td>
-            <td><%= data.email %></td>
-            <td><%= data.username %></td>
-            <td><a href="/users/edit">Edit</a></td>
-            <td><a href="/users/delete">Delete</a></td>
-        </tr>
-        <% }) %>
-        <% } else{ %>
-        <tr>
-            <td colspan="7">No Data Found</td>
-        </tr>
-        <% } %>
-    </table>
-
-</div>
+<a href="/admin/users">Usuarios</a> <a href="/admin/citas">Citas</a> <a href="/">Home</a>
 
 

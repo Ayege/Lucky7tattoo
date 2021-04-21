@@ -1,0 +1,36 @@
+<div class="table-data">
+    <h2>Tabla Citas</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Status</th>
+            <th>Observaciones</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <%
+            if(citaData.length!=0){
+                citaData.forEach(function(citadata){
+            %>
+        <tr>
+            <td><%= citadata.id %></td>
+            <td><%= citadata.fecha %></td>
+            <td><%= citadata.hora %></td>
+            <td><%= citadata.status %></td>
+            <td><%= citadata.observaciones %></td>
+            <td><a href="/citas/edit">Edit</a></td>
+            <td><a href="/citas/delete">Delete</a></td>
+        </tr>
+        <% }) %>
+        <% } else{ %>
+        <tr>
+            <td colspan="7">No Data Found</td>
+        </tr>
+        <% } %>
+    </table>
+    
+    <a href="/">Return Home</a>  <a href="/admin/dashboard">Return Dashboard</a>
+</div>

@@ -1,0 +1,36 @@
+<div class="table-data">
+    <h2>Tabla Usuarios</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Middlename</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <%
+            if(userData.length!=0){
+            userData.forEach(function(userdata){
+            %>
+        <tr>
+            <td><%= userdata.name %></td>
+            <td><%= userdata.middlename %></td>
+            <td><%= userdata.phone %></td>
+            <td><%= userdata.email %></td>
+            <td><%= userdata.username %></td>
+            <td><a href="/users/edit">Edit</a></td>
+            <td><a href="/users/delete">Delete</a></td>
+        </tr>
+        <% }) %>
+        <% } else{ %>
+        <tr>
+            <td colspan="7">No Data Found</td>
+        </tr>
+        <% } %>
+    </table>
+    
+    <a href="/">Return Home</a>  <a href="/admin/dashboard">Return Dashboard</a>
+</div>
