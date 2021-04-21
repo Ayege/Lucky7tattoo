@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const User = require('../database/user');
+const db = require('../database/db');
 
 const user = new User();
 let loggeduser = "";
@@ -25,6 +26,22 @@ router.get('/home', (req, res, next) => {
     }
     res.redirect('/');
 });
+router.get('/admin/dashboard', (req, res, next)=>{
+    let user = req.session.user;
+    if(user){
+        if(loggeduser.username == 'admin'){
+            let sqluser = 'SELECT * FROM lucky_users';
+            db.query(sqluser, (err, data,  fields)=>{
+                if (err) throw err;
+                res.render('user-admin/dashboard', {userData: data});
+            });
+        }else{
+            res.redirect('/unauthorized');
+        }
+        return;
+    }
+    res.redirect('/');
+});
 // --------- START OF LOGIN SYSTEM ----
 router.get('/signup', (req, res) => {
     res.render('signup');
@@ -39,6 +56,7 @@ router.post('/signup', (req, res, next) => {
         username: req.body.username,
         password: req.body.password
     };
+    if (userInput.username != 'admin'){
      user.create(userInput, function (lastId) {
         if (lastId) {
             user.find(lastId, function (result) {
@@ -54,7 +72,9 @@ router.post('/signup', (req, res, next) => {
         }
         return;
     });
-
+}else{
+    res.redirect('signup');
+}
 });
 
 router.get('/login', (req, res) => {
@@ -63,6 +83,7 @@ router.get('/login', (req, res) => {
     if (user) {
         res.render('home', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
         return;
+        
     }
     res.render('login');
 });
@@ -86,8 +107,7 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
     if (req.session.user) {
         req.session.destroy(function () {
-            res.send('Logged Out.');
-            //res.redirect('/');
+            res.send('Logged Out. Redirect Home <a href="/">Here.</a>');
         });
     }
 });
@@ -168,15 +188,6 @@ router.get('/faq', (req, res) => {
     }
     res.render('faq');
 });
-router.get('/gallery', (req, res) => {
-    let user = req.session.user;
-
-    if (user) {
-        res.render('gallery-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
-        return;
-    }
-    res.render('gallery');
-});
 // --------- END OF SECONDARY PAGES -------
 // ---------- START OF PAYMENT PAGES ---------
 router.get('/catalog-page', (req, res) => {
@@ -206,14 +217,24 @@ router.get('/product-page-targeta', (req, res) => {
     }
     res.render('product-page-targeta');
 });
-//----- por quitar shopping cart y payment page ---------
+//----- por quitar shopping cart y payment page 
 router.get('/shopping-cart', (req, res) => {
     res.render('shopping-cart');
 });
 router.get('/payment-page', (req, res) => {
     res.render('payment-page');
 });
-// ------------------------------------
+// --------- END OF PAYMENT PAGES ----------
+// --------- START OF GALLERY PAGES ----------
+router.get('/gallery', (req, res) => {
+    let user = req.session.user;
+
+    if (user) {
+        res.render('gallery-user', { opp: req.session.opp, name: loggeduser.name , middlename: loggeduser.middlename });
+        return;
+    }
+    res.render('gallery');
+});
 router.get('/gallery_Daniel', (req, res) => {
     let user = req.session.user;
 
@@ -241,7 +262,9 @@ router.get('/gallery_Brigitte', (req, res) => {
     }
     res.render('gallery_Brigitte');
 });
-// --------- END OF PAYMENT PAGES ----------
-
+// --------- END GALLERY PAGES -----------
+router.get('/unauthorized', (req, res)=>{
+    res.render('not-allowed');
+});
 
 module.exports = router;
