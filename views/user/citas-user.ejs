@@ -49,15 +49,42 @@
                             style="color: #F5D10D;font-family: Montserrat, sans-serif;">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link active" href="catalog-page"
                             style="color: #F5D10D;font-family: Montserrat, sans-serif;">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="citas"
-                            style="color: #F5D10D;font-family: Montserrat, sans-serif;">Citas</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="citas"
+                                style="color: #F5D10D;font-family: Montserrat, sans-serif;">Citas</a></li>
                     <li class="nav-item"><a class="nav-link active" href="faq"
                             style="color: #F5D10D;font-family: Montserrat, sans-serif;">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link active" href="contact-us"
                             style="color: #F5D10D;font-family: Montserrat, sans-serif;">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="login"
-                            style="color: #F5D10D;font-family: Montserrat, sans-serif;">Log In</a></li>
+                    <li class="nav-item"><a class="nav-link active" title="Logout" href="/logout"
+                            style="color: #F5D10D;font-family: Montserrat, sans-serif;"><%= name %></a></li>
                 </ul>
             </div>
         </div>
     </nav>
+<main class="page citas-page">
+    <section class="clean-block clean-form dark" style="color: rgb(33, 37, 41);background: rgb(0,0,0);">
+        <div class="container">
+            <div class="block-heading">
+                <h2 style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Reserva tu cita</h2>
+            </div>
+            <form method="POST" action="reservar">
+                <div class="mb-3"><label class="form-label" for="fecha"
+                        style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Fecha</label><input
+                        class="form-control" type="date" id="fecha" name="fecha" required></div>
+                <div class="mb-3"><label class="form-label" for="hora"
+                        style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Hora</label><input
+                        class="form-control" type="time" id="hora" name="hora" required></div>
+                <div class="mb-3"><label class="form-label" for="email"
+                        style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Email</label><input
+                        class="form-control" type="email" id="email" name="email" value="<%=email%>" required></div>
+                <div class="mb-3"><label class="form-label" for="observaciones"
+                        style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Observaciones</label><textarea
+                        class="form-control" id="observaciones" name="observaciones"></textarea></div>
+                <div class="text-center mb-3"><button class="btn btn-primary" type="submit"
+                        style="background: rgb(245,209,13);color: rgb(0,0,0);font-family: Montserrat, sans-serif;font-size: 20px;text-align: center;">Reserva Ya!</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main><!-- Start: Footer Basic -->
+<%- include('../partials/_footer') -%>

@@ -21,8 +21,8 @@
             <td><%= citadata.hora %></td>
             <td><%= citadata.status %></td>
             <td><%= citadata.observaciones %></td>
-            <td><a href="/citas/edit">Edit</a></td>
-            <td><a href="/citas/delete">Delete</a></td>
+            <td><a href="/admin/citas/edit/<%= citadata.id %>">Edit</a></td>
+            <td><a href="/admin/citas/delete/<%= citadata.id %>">Delete</a></td>
         </tr>
         <% }) %>
         <% } else{ %>

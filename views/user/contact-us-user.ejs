@@ -49,6 +49,8 @@
                             style="color: #F5D10D;font-family: Montserrat, sans-serif;">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link active" href="catalog-page"
                             style="color: #F5D10D;font-family: Montserrat, sans-serif;">Shop</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="citas"
+                                style="color: #F5D10D;font-family: Montserrat, sans-serif;">Citas</a></li>
                     <li class="nav-item"><a class="nav-link active" href="faq"
                             style="color: #F5D10D;font-family: Montserrat, sans-serif;">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link active" href="contact-us"
@@ -66,9 +68,9 @@
                     <h2 style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Contact Us</h2>
                 </div>
                 <form method="POST" action="send">
-                    <div class="mb-3"><label class="form-label" for="name" style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Name</label><input class="form-control" type="text" id="name" name="name"></div>
+                    <div class="mb-3"><label class="form-label" for="name" style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Name</label><input class="form-control" type="text" id="name" name="name" value="<%=name%> <%=middlename%>"></div>
                     <div class="mb-3"><label class="form-label" for="subject" style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Subject</label><input class="form-control" type="text" id="subject" name="subject"></div>
-                    <div class="mb-3"><label class="form-label" for="email" style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Email</label><input class="form-control" type="email" id="email" name="email"></div>
+                    <div class="mb-3"><label class="form-label" for="email" style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Email</label><input class="form-control" type="email" id="email" name="email" value="<%=email%>" required></div>
                     <div class="mb-3"><label class="form-label" for="message" style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Message</label><textarea class="form-control" id="message" name="message"></textarea></div>
                     <div class="text-center mb-3"><button class="btn btn-primary" type="submit" style="background: rgb(245,209,13);color: rgb(0,0,0);font-family: Montserrat, sans-serif;font-size: 20px;text-align: center;">Send</button></div>
                 </form>

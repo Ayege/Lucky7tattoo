@@ -2,6 +2,7 @@
     <h2>Tabla Usuarios</h2>
     <table border="1">
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Middlename</th>
             <th>Phone</th>
@@ -16,13 +17,14 @@
             userData.forEach(function(userdata){
             %>
         <tr>
+            <td><%= userdata.id %></td>
             <td><%= userdata.name %></td>
             <td><%= userdata.middlename %></td>
             <td><%= userdata.phone %></td>
             <td><%= userdata.email %></td>
             <td><%= userdata.username %></td>
-            <td><a href="/users/edit">Edit</a></td>
-            <td><a href="/users/delete">Delete</a></td>
+            <td><a href="/admin/users/edit/<%= userdata.id %>">Edit</a></td>
+            <td><a href="/admin/users/delete/<%= userdata.id %>">Delete</a></td>
         </tr>
         <% }) %>
         <% } else{ %>
