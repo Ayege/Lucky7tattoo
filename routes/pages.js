@@ -152,7 +152,7 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
     if (req.session.user) {
         req.session.destroy(function () {
-            res.send('Logged Out. Redirect Home <a href="/">Here.</a>');
+            res.send('</br><h1>Logged Out. Redirect Home <a href="/">Here.</a></h1>');
         });
     }
 });
@@ -162,7 +162,7 @@ router.get('/logout', (req, res, next) => {
 router.get('/citas', (req, res) => {
     let user = req.session.user;
     if (user) {
-        res.render('user/citas-user', { opp: req.session.opp, name: loggeduser.name, email: loggeduser.email });
+        res.render('user/citas-user', { opp: req.session.opp, name: loggeduser.name, email: loggeduser.email, usuario: loggeduser.username });
         return;
     }
     res.render('citas');
@@ -174,7 +174,10 @@ router.post('/reservar', (req, res) => {
         let citaInput = {
             fecha: req.body.fecha,
             hora: req.body.hora,
-            status: 'Pendiente/Por Confirmar',
+            usuario: loggeduser.username,
+            tatuador: req.body.tatuador,
+            servicio: req.body.servicio,
+            status: 'Pendiente / Por Confirmar',
             observaciones: req.body.observaciones
         };
         db.query('INSERT INTO lucky_citas set ?', [citaInput]);
@@ -188,6 +191,8 @@ router.post('/reservar', (req, res) => {
         <li>Status de Cita: ${citaInput.status}</li>
         <li>Fecha de Cita: ${citaInput.fecha}</li>
         <li>Hora de Cita: ${citaInput.hora}</li>
+        <li>Reservado con: ${citaInput.tatuador}</li>
+        <li>Tipo de Servicio: ${citaInput.servicio}</li>
         <li>Observaciones: ${citaInput.observaciones}</li>
     </ul>
     <p>Gracias por preferirnos ${loggeduser.name + ' ' + loggeduser.middlename}, Estaremos en contacto para confirmarle la hora de su cita, para mas información puede contactarnos por nuestro modulo de contacto o via nuestras redes sociales.</p>
@@ -438,14 +443,14 @@ router.get('/admin/citas/edit/:id', (req, res) => {
         let sqlcita = 'SELECT * FROM lucky_citas WHERE id = ?';
         db.query(sqlcita, [req.params.id], (err, citadata, fields) => {
             if (err) throw err;
-            res.render('user-admin/editCita', { id: req.params.id, fecha: citadata[0].fecha, hora: citadata[0].hora, status: citadata[0].status, observaciones: citadata[0].observaciones });
+            res.render('user-admin/editCita', { id: req.params.id, fecha: citadata[0].fecha, hora: citadata[0].hora, usuario:citadata[0].usuario, tatuador:citadata[0].tatuador, servicio:citadata[0].servicio, status: citadata[0].status, observaciones: citadata[0].observaciones });
         })
     } else
         res.redirect('/unauthorized');
 });
 router.post('/admin/citas/edit/:id', (req, res, next) => {
     if (loggeduser.username == 'admin') {
-        let newCitaInput = { fecha: req.body.fecha, hora: req.body.hora, status: req.body.status, observaciones: req.body.observaciones };
+        let newCitaInput = { fecha: req.body.fecha, hora: req.body.hora, usuario:req.body.usuario, tatuador:req.body.tatuador, servicio:req.body.servicio, status: req.body.status, observaciones: req.body.observaciones };
         db.query('UPDATE lucky_citas SET ? WHERE id = ?', [newCitaInput, req.params.id], (err, result) => {
             if (err) throw err;
             console.log(result.affectedRows + " appointment updated");

@@ -68,18 +68,39 @@
                 <h2 style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Reserva tu cita</h2>
             </div>
             <form method="POST" action="reservar">
-                <div class="mb-3"><label class="form-label" for="fecha"
+                <div class="mb-1"><label class="form-label" for="fecha"
                         style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Fecha</label><input
-                        class="form-control" type="date" id="fecha" name="fecha" required></div>
-                <div class="mb-3"><label class="form-label" for="hora"
+                        class="form-control" type="date" id="fecha" name="fecha" placeholder="Fecha" required></div>
+                <div class="mb-1"><label class="form-label" for="hora"
                         style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Hora</label><input
-                        class="form-control" type="time" id="hora" name="hora" required></div>
-                <div class="mb-3"><label class="form-label" for="email"
-                        style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Email</label><input
-                        class="form-control" type="email" id="email" name="email" value="<%=email%>" required></div>
-                <div class="mb-3"><label class="form-label" for="observaciones"
+                        class="form-control" type="time" id="hora" name="hora" placeholder="Hora" required></div>
+               
+                <div class="mb-1">
+                    <label class="form-label" for="usuario" style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Usuario</label>
+                    <input type="text" class="form-control" name="usuario" id="usuario" value="<%=usuario%>" disabled></input>
+                </div>
+
+                <div class="mb-0">
+                    <label class="form-label" for="tatuador" style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Tatuador</label>
+                    <select name="tatuador" id="tatuador" style="font-size: 20px" required>
+                        <option value="NULL">Not Selected</option>
+                        <option>Brigitte</option>
+                        <option>Daniel</option>
+                        <option value="Marianna">Marianna</option>
+                    </select>
+                </div>
+
+                <div class="mb-0">
+                    <label class="form-label" for="servicio" style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Servicio</label>
+                    <select name="servicio" id="servicio" style="font-size: 20px" required>
+                        <option value="NULL">Not Selected</option>
+                        <option value="Tatuado">Tatuaje</option>
+                        <option value="Piercing">Piercing</option>
+                    </select>
+                </div>
+                <div class="mb-1"><label class="form-label" for="observaciones"
                         style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Observaciones</label><textarea
-                        class="form-control" id="observaciones" name="observaciones"></textarea></div>
+                        class="form-control" id="observaciones" name="observaciones" placeholder="Observaciones" required></textarea></div>
                 <div class="text-center mb-3"><button class="btn btn-primary" type="submit"
                         style="background: rgb(245,209,13);color: rgb(0,0,0);font-family: Montserrat, sans-serif;font-size: 20px;text-align: center;">Reserva Ya!</button>
                 </div>

@@ -5,6 +5,9 @@
             <th>ID</th>
             <th>Fecha</th>
             <th>Hora</th>
+            <th>Usuario</th>
+            <th>Tatuador</th>
+            <th>Servicio</th>
             <th>Status</th>
             <th>Observaciones</th>
             <th></th>
@@ -19,6 +22,9 @@
             <td><%= citadata.id %></td>
             <td><%= citadata.fecha %></td>
             <td><%= citadata.hora %></td>
+            <td><%= citadata.usuario %></td>
+            <td><%= citadata.tatuador %></td>
+            <td><%= citadata.servicio %></td>
             <td><%= citadata.status %></td>
             <td><%= citadata.observaciones %></td>
             <td><a href="/admin/citas/edit/<%= citadata.id %>">Edit</a></td>
@@ -27,7 +33,7 @@
         <% }) %>
         <% } else{ %>
         <tr>
-            <td colspan="7">No Data Found</td>
+            <td colspan="10">No Data Found</td>
         </tr>
         <% } %>
     </table>
