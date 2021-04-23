@@ -315,7 +315,7 @@ router.get('/faq', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/faq-user', { opp: req.session.opp, name: loggeduser.name, middlename: loggeduser.middlename });
+        res.render('user/faq-user', { opp: req.session.opp, name: loggeduser.name});
         return;
     }
     res.render('faq');
@@ -326,7 +326,7 @@ router.get('/catalog-page', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/catalog-page-user', { opp: req.session.opp, name: loggeduser.name, middlename: loggeduser.middlename });
+        res.render('user/catalog-page-user', { opp: req.session.opp, name: loggeduser.name});
         return;
     }
     res.render('catalog-page');
@@ -335,7 +335,7 @@ router.get('/product-page-cuidado-tats', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/product-page-cuidado-tats-user', { opp: req.session.opp, name: loggeduser.name, middlename: loggeduser.middlename });
+        res.render('user/product-page-cuidado-tats-user', { opp: req.session.opp, name: loggeduser.name});
         return;
     }
     res.render('product-page-cuidado-tats');
@@ -344,7 +344,7 @@ router.get('/product-page-targeta', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/product-page-targeta-user', { opp: req.session.opp, name: loggeduser.name, middlename: loggeduser.middlename });
+        res.render('user/product-page-targeta-user', { opp: req.session.opp, name: loggeduser.name});
         return;
     }
     res.render('product-page-targeta');
@@ -362,7 +362,7 @@ router.get('/gallery', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/gallery-user', { opp: req.session.opp, name: loggeduser.name, middlename: loggeduser.middlename });
+        res.render('user/gallery-user', { opp: req.session.opp, name: loggeduser.name});
         return;
     }
     res.render('gallery');
@@ -371,7 +371,7 @@ router.get('/gallery_Daniel', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/gallery-Daniel-user', { opp: req.session.opp, name: loggeduser.name, middlename: loggeduser.middlename });
+        res.render('user/gallery-Daniel-user', { opp: req.session.opp, name: loggeduser.name});
         return;
     }
     res.render('gallery_Daniel');
@@ -380,7 +380,7 @@ router.get('/gallery_Marianna', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/gallery-Marianna-user', { opp: req.session.opp, name: loggeduser.name, middlename: loggeduser.middlename });
+        res.render('user/gallery-Marianna-user', { opp: req.session.opp, name: loggeduser.name});
         return;
     }
     res.render('gallery_Marianna');
@@ -389,7 +389,7 @@ router.get('/gallery_Brigitte', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/gallery-Brigitte-user', { opp: req.session.opp, name: loggeduser.name, middlename: loggeduser.middlename });
+        res.render('user/gallery-Brigitte-user', { opp: req.session.opp, name: loggeduser.name});
         return;
     }
     res.render('gallery_Brigitte');
