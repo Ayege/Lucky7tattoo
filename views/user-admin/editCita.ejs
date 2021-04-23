@@ -1,0 +1,32 @@
+<main class="page citas-page">
+        <section class="clean-block clean-form">
+            <div class="container">
+<form action="/admin/citas/edit/<%= id %>" method="POST" name="form1">
+    <div class="mb-3">
+        <label class="form-label" for="fecha" >Fecha</label>
+        <input type="date" class="form-control" name="fecha" id="fecha" value="<%=fecha%>"></input>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="hora">Hora</label>
+        <input type="time" class="form-control" name="hora" id="hora" value="<%=hora%>"></input>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="status">Status</label>
+        <input type="text" class="form-control" name="status" id="status" value="<%=status%>"></input>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="observaciones">Observaciones</label>
+        <input type="text" class="form-control" name="observaciones" id="observaciones"
+            value="<%=observaciones%>"></input>
+
+    </div>
+
+    <button type="submit" class="btn btn-info">Edit</button>
+</form>
+<a href="/admin/citas">Go Back</a>
+</div>
+</section>
+</main>

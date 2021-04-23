@@ -3,21 +3,18 @@
     <section class="clean-block clean-form dark" style="color: rgb(33, 37, 41);background: rgb(0,0,0);">
         <div class="container">
             <div class="block-heading">
-                <h2 style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Reserva tu cita</h2>
+                <h2 style="color: #F5D10D;font-family: UnifrakturMaguntia, cursive;">Debe estar Loggeado</h2>
             </div>
             <form method="POST" action="reservar">
                 <div class="mb-3"><label class="form-label" for="fecha"
                         style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Fecha</label><input
-                        class="form-control" type="date" id="fecha" name="fecha" required></div>
+                        class="form-control" type="date" id="fecha" name="fecha" disabled></div>
                 <div class="mb-3"><label class="form-label" for="hora"
                         style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Hora</label><input
-                        class="form-control" type="time" id="hora" name="hora" required></div>
-                <div class="mb-3"><label class="form-label" for="email"
-                        style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Email</label><input
-                        class="form-control" type="email" id="email" name="email" required></div>
+                        class="form-control" type="time" id="hora" name="hora" disabled></div>
                 <div class="mb-3"><label class="form-label" for="observaciones"
                         style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Observaciones</label><textarea
-                        class="form-control" id="observaciones" name="observaciones"></textarea></div>
+                        class="form-control" id="observaciones" name="observaciones" disabled></textarea></div>
                 <div class="text-center mb-3"><button class="btn btn-primary" type="submit"
                         style="background: rgb(245,209,13);color: rgb(0,0,0);font-family: Montserrat, sans-serif;font-size: 20px;text-align: center;">Reserva Ya!</button>
                 </div>

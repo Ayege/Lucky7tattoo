@@ -117,6 +117,7 @@ router.post('/signup', (req, res, next) => {
             return;
         });
     } else {
+        console.log('Can`t create Admin user.')
         res.redirect('signup');
     }
 });
@@ -394,42 +395,77 @@ router.get('/unauthorized', (req, res) => {
 });
 //--------- UPDATE AND DELETE --------------------
 router.get('/admin/users/edit/:id', (req, res) => {
-    db.query('SELECT * FROM lucky_users WHERE id = ?', [req.params.id], (err, rows, fields) => {
-        if (!err)
-            res.send(rows);
-        else
-            console.log(err);
-    })
+    if (loggeduser.username == 'admin') {
+        db.query('SELECT * FROM lucky_users WHERE id = ?', [req.params.id], (err, rows, fields) => {
+            if (err) throw err;
+            res.render('user-admin/editUser', { id: req.params.id, name: rows[0].name, middlename: rows[0].middlename, phone: rows[0].phone, email: rows[0].email });
+        })
+    } else
+        res.redirect('/unauthorized');
+});
+router.post('/admin/users/edit/:id', (req, res, next) => {
+    if (loggeduser.username == 'admin') {
+        let newUserInput = { name: req.body.name, middlename: req.body.middlename, phone: req.body.phone, email: req.body.email };
+        db.query('UPDATE lucky_users SET ? WHERE id = ?', [newUserInput, req.params.id], (err, result) => {
+            if (err) throw err;
+            console.log(result.affectedRows + " user updated");
+        });
+        res.redirect('/admin/users');
+    } else
+        res.redirect('/unauthorized');
 });
 router.get('/admin/users/delete/:id', (req, res) => {
-    if (req.params.id != '14') {
-        db.query('DELETE FROM lucky_users WHERE id = ?', [req.params.id], (err, rows, fields) => {
-            if (!err){
-                console.log('Deleted Succesfully!');
-                res.redirect('/admin/users');
-            }    
+    if (loggeduser.username == 'admin') {
+        if (req.params.id == '14') {
+            res.send('Admin Cannot be deleted');
+            return;
+
+        } else {
+            db.query('DELETE FROM lucky_users WHERE id = ?', [req.params.id], (err, rows, fields) => {
+                if (!err) {
+                    console.log('Usuario Eliminado');
+                    res.redirect('/admin/users');
+                }
+                else
+                    console.log(err);
+            })
+        }
+    } else
+        res.redirect('/unauthorized');
+});
+router.get('/admin/citas/edit/:id', (req, res) => {
+    if (loggeduser.username == 'admin') {
+        let sqlcita = 'SELECT * FROM lucky_citas WHERE id = ?';
+        db.query(sqlcita, [req.params.id], (err, citadata, fields) => {
+            if (err) throw err;
+            res.render('user-admin/editCita', { id: req.params.id, fecha: citadata[0].fecha, hora: citadata[0].hora, status: citadata[0].status, observaciones: citadata[0].observaciones });
+        })
+    } else
+        res.redirect('/unauthorized');
+});
+router.post('/admin/citas/edit/:id', (req, res, next) => {
+    if (loggeduser.username == 'admin') {
+        let newCitaInput = { fecha: req.body.fecha, hora: req.body.hora, status: req.body.status, observaciones: req.body.observaciones };
+        db.query('UPDATE lucky_citas SET ? WHERE id = ?', [newCitaInput, req.params.id], (err, result) => {
+            if (err) throw err;
+            console.log(result.affectedRows + " appointment updated");
+        });
+        res.redirect('/admin/citas');
+    } else
+        res.redirect('/unauthorized');
+});
+router.get('/admin/citas/delete/:id', (req, res) => {
+    if (loggeduser.username == 'admin') {
+        db.query('DELETE FROM lucky_citas WHERE id = ?', [req.params.id], (err, rows, fields) => {
+            if (!err) {
+                console.log('Cita Eliminada');
+                res.redirect('/admin/citas');
+            }
             else
                 console.log(err);
         })
-    }
-    res.send('Admin Cannot be deleted');
-});
-router.get('/admin/citas/edit/:id', (req, res) => {
-    let sqlcita = 'SELECT * FROM lucky_citas WHERE id = ?';
-    db.query(sqlcita, [req.params.id], (err, citadata, fields) => {
-        if (err) throw err;
-        res.send(citadata);
-    })
-});
-router.get('/admin/citas/delete/:id', (req, res) => {
-    db.query('DELETE FROM lucky_citas WHERE id = ?', [req.params.id], (err, rows, fields) => {
-        if (!err){
-             console.log('Deleted Succesfully!');
-            res.redirect('/admin/citas');
-        }
-        else
-            console.log(err);
-    })
+    } else
+        res.redirect('/unauthorized');
 });
 
 module.exports = router;

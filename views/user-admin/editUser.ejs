@@ -1,0 +1,32 @@
+<main class="page citas-page">
+    <section class="clean-block clean-form">
+        <div class="container">
+<form action="/admin/users/edit/<%= id %>" method="POST" name="form2">
+<div class="mb-3">
+    <label class="form-label" for="name" >Nombre</label>
+    <input type="text" class="form-control" name="name" id="name" value="<%=name%>"></input>
+</div>
+
+<div class="mb-3">
+    <label class="form-label" for="middlename">Apellido</label>
+    <input type="text" class="form-control" name="middlename" id="middlename" value="<%=middlename%>"></input>
+</div>
+
+<div class="mb-3">
+    <label class="form-label" for="phone">Telefono</label>
+    <input type="text" class="form-control" name="phone" id="phone" value="<%=phone%>"></input>
+</div>
+
+<div class="mb-3">
+    <label class="form-label" for="email">Email</label>
+    <input type="email" class="form-control" name="email" id="email"
+        value="<%=email%>"></input>
+
+</div>
+
+<button type="submit" class="btn btn-info">Edit</button>
+</form>
+<a href="/admin/users">Go Back</a>
+</div>
+</section>
+</main>
