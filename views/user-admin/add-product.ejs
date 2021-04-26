@@ -1,0 +1,30 @@
+<main class="page add-product-page">
+    <section class="clean-block clean-form">
+        <div class="container">
+<form action="/admin/product/add-product" method="POST" name="form1">
+<div class="mb-3">
+    <label class="form-label" for="producto" >Nombre Producto</label>
+    <input type="text" class="form-control" name="producto" id="producto"></input>
+</div>
+
+<div class="mb-3">
+    <label class="form-label" for="precio">Precio</label>
+    <input type="text" class="form-control" name="precio" id="precio"></input>
+</div>
+
+<div class="mb-3">
+    <label class="form-label" for="descripcion">Descripcion</label>
+    <input type="text" class="form-control" name="descripcion" id="descripcion"></input>
+</div>
+
+<div class="mb-3">
+    <label class="form-label" for="imagen">Imagen</label>
+    <input type="text" class="form-control" name="imagen" id="imagen">
+</div>
+
+<button type="submit" class="btn btn-info">Add Product</button>
+</form>
+<a href="/admin/dashboard">Go Back</a>
+</div>
+</section>
+</main>

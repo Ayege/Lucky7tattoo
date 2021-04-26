@@ -86,6 +86,65 @@ router.get('/admin/citas', (req, res, next) => {
     }
     res.redirect('/');
 });
+router.get('/admin/product', (req, res, next) => {
+    let user = req.session.user;
+    if (user) {
+        if (loggeduser.username == 'admin') {
+            let sqlproduct = 'SELECT * FROM lucky_productos';
+            db.query(sqlproduct, (err, productdata, fields) => {
+                if (err) throw err;
+                res.render('user-admin/product-table', { productData: productdata });
+            });
+        } else {
+            res.redirect('/unauthorized');
+        }
+        return;
+    }
+    res.redirect('/');
+});
+router.get('/admin/product/add-product', (req, res, next) => {
+    let user = req.session.user;
+    if (user) {
+        if (loggeduser.username == 'admin') {
+                res.render('user-admin/add-product');
+        } else {
+            res.redirect('/unauthorized');
+        }
+        return;
+    }
+    res.redirect('/');
+});
+router.post('/admin/product/add-product', (req, res, next) => {
+    let user = req.session.user;
+    if (user) {
+        if (loggeduser.username == 'admin') {
+            let newProduct = {producto:req.body.producto, precio:req.body.precio, descripcion:req.body.descripcion, imagen:req.body.imagen};
+            let sqlproducto = `INSERT INTO lucky_productos SET ?`;
+            db.query(sqlproducto, [newProduct], (err, result)=>{
+                if (err) throw err;
+                console.log(newProduct.producto + ' Fue agregado a productos.');
+                res.redirect('/admin/product');
+            })
+        } else {
+            res.redirect('/unauthorized');
+        }
+        return;
+    }
+    res.redirect('/');
+});
+router.get('/admin/product/delete/:id', (req, res) => {
+    if (loggeduser.username == 'admin') {
+        db.query('DELETE FROM lucky_productos WHERE id = ?', [req.params.id], (err, rows, fields) => {
+            if (!err) {
+                console.log('Producto Eliminado');
+                res.redirect('/admin/product');
+            }
+            else
+                console.log(err);
+        })
+    } else
+        res.redirect('/unauthorized');
+});
 // --------- START OF LOGIN SYSTEM ----
 router.get('/signup', (req, res) => {
     res.render('signup');

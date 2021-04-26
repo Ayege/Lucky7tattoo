@@ -1,0 +1,35 @@
+<div class="table-data">
+    <h2>Tabla Productos</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Imagen</th>
+            <th></th>
+        </tr>
+
+        <%
+            if(productData.length!=0){
+                productData.forEach(function(productdata){
+            %>
+        <tr>
+            <td><%= productdata.id %></td>
+            <td><%= productdata.producto %></td>
+            <td><%= productdata.precio %></td>
+            <td><%= productdata.descripcion %></td>
+            <td><%= productdata.imagen %></td>
+            <td><a href="/admin/product/delete/<%= productdata.id %>">Delete</a></td>
+        </tr>
+        <% }) %>
+        <% } else{ %>
+        <tr>
+            <td colspan="4">No Data Found</td>
+            <td colspan="2"><a href="/admin/product/add-product">Add Product</a></td>
+        </tr>
+        <% } %>
+    </table>
+    
+    <a href="/">Return Home</a>  <a href="/admin/dashboard">Return Dashboard</a> <a href="/admin/product/add-product">Add Product</a>
+</div>
