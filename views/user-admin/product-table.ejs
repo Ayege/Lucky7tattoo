@@ -8,6 +8,7 @@
             <th>Descripcion</th>
             <th>Imagen</th>
             <th></th>
+            <th></th>
         </tr>
 
         <%
@@ -20,12 +21,13 @@
             <td><%= productdata.precio %></td>
             <td><%= productdata.descripcion %></td>
             <td><%= productdata.imagen %></td>
+            <td><a href="/admin/product/view/<%= productdata.id %>">View</a></td>
             <td><a href="/admin/product/delete/<%= productdata.id %>">Delete</a></td>
         </tr>
         <% }) %>
         <% } else{ %>
         <tr>
-            <td colspan="4">No Data Found</td>
+            <td colspan="5">No Data Found</td>
             <td colspan="2"><a href="/admin/product/add-product">Add Product</a></td>
         </tr>
         <% } %>

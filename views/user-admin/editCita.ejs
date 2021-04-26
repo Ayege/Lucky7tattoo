@@ -3,22 +3,22 @@
             <div class="container">
 <form action="/admin/citas/edit/<%= id %>" method="POST" name="form1">
     <div class="mb-3">
-        <label class="form-label" for="fecha" >Fecha</label>
-        <input type="date" class="form-control" name="fecha" id="fecha" value="<%=fecha%>"></input>
+        <label class="form-label" for="fecha" >Fecha:</label>
+        <input type="date" class="form-control min="2021-04-26" max="2021-12-31"" name="fecha" id="fecha" value="<%=fecha%>"></input>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="hora">Hora</label>
-        <input type="time" class="form-control" name="hora" id="hora" value="<%=hora%>"></input>
+        <label class="form-label" for="hora">Hora:</label>
+        <input type="time" class="form-control" min="08:00" max="19:00" step="3600" name="hora" id="hora" value="<%=hora%>"></input>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="usuario">Usuario</label>
+        <label class="form-label" for="usuario">Usuario:</label>
         <input type="text" class="form-control" name="usuario" id="usuario" value="<%=usuario%>"></input>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="tatuador">Tatuador</label>
+        <label class="form-label" for="tatuador">Tatuador:</label>
         <select name="tatuador" id="tatuador">
             <option value="Brigitte">Brigitte</option>
             <option value="Daniel">Daniel</option>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="servicio">Servicio</label>
+        <label class="form-label" for="servicio">Servicio:</label>
         <select name="servicio" id="servicio">
             <option value="Tatuado">Tatuado</option>
             <option value="Piercing">Piercing</option>
@@ -35,12 +35,17 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="status">Status</label>
-        <input type="text" class="form-control" name="status" id="status" value="<%=status%>"></input>
+        <label class="form-label" for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="<%= status %>"><%= status %></option>
+            <option value="No Disponible">No Disponible</option>
+            <option value="Confirmada">Confirmada</option>
+            <option value="Completada">Completada</option>
+        </select>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="observaciones">Observaciones</label>
+        <label class="form-label" for="observaciones">Observaciones:</label>
         <input type="text" class="form-control" name="observaciones" id="observaciones"
             value="<%=observaciones%>"></input>
 

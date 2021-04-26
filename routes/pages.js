@@ -106,7 +106,7 @@ router.get('/admin/product/add-product', (req, res, next) => {
     let user = req.session.user;
     if (user) {
         if (loggeduser.username == 'admin') {
-                res.render('user-admin/add-product');
+            res.render('user-admin/add-product');
         } else {
             res.redirect('/unauthorized');
         }
@@ -118,19 +118,47 @@ router.post('/admin/product/add-product', (req, res, next) => {
     let user = req.session.user;
     if (user) {
         if (loggeduser.username == 'admin') {
-            let newProduct = {producto:req.body.producto, precio:req.body.precio, descripcion:req.body.descripcion, imagen:req.body.imagen};
-            let sqlproducto = `INSERT INTO lucky_productos SET ?`;
-            db.query(sqlproducto, [newProduct], (err, result)=>{
-                if (err) throw err;
-                console.log(newProduct.producto + ' Fue agregado a productos.');
-                res.redirect('/admin/product');
-            })
+            
+            if (!req.files || Object.keys(req.files).length === 0)
+                return res.status(400).send('No files were uploaded.');
+            
+            let newProduct = { producto: req.body.producto, precio: req.body.precio, descripcion: req.body.descripcion, imagen: req.files.imagen.name};
+            let file = req.files.imagen;
+            
+            if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+
+                let uploadPath = './public/uploaded/' + file.name;
+                file.mv(uploadPath, (err) => {
+                    if (err) throw err;
+
+                    let sqlproducto = `INSERT INTO lucky_productos SET ?`;
+                    db.query(sqlproducto, [newProduct],  (err, result) => {
+                        if (err) throw err;
+                        console.log(newProduct.producto + ' Fue agregado a productos.');
+                        res.redirect('/admin/product');
+                    });
+                    
+                    return;
+                })
+            } else {
+                res.send('This format is not allowed , please upload file with `.png`,`.gif`,`.jpg`');
+            }
+
         } else {
             res.redirect('/unauthorized');
         }
         return;
     }
     res.redirect('/');
+});
+router.get('/admin/product/view/:id', (req, res)=>{
+    if (loggeduser.username == 'admin') {
+        db.query('SELECT * FROM lucky_productos WHERE id = ?', [req.params.id], (err, data, fields) => {
+            if (err) throw err;
+            res.render('test', { id: req.params.id, productData: data});
+        })
+    } else
+        res.redirect('/unauthorized');
 });
 router.get('/admin/product/delete/:id', (req, res) => {
     if (loggeduser.username == 'admin') {
@@ -236,9 +264,10 @@ router.post('/reservar', (req, res) => {
             usuario: loggeduser.username,
             tatuador: req.body.tatuador,
             servicio: req.body.servicio,
-            status: 'Pendiente / Por Confirmar',
+            status: 'Por Confirmar',
             observaciones: req.body.observaciones
         };
+
         db.query('INSERT INTO lucky_citas set ?', [citaInput]);
         console.log('Cita Creada');
 
@@ -374,7 +403,7 @@ router.get('/faq', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/faq-user', { opp: req.session.opp, name: loggeduser.name});
+        res.render('user/faq-user', { opp: req.session.opp, name: loggeduser.name });
         return;
     }
     res.render('faq');
@@ -385,7 +414,7 @@ router.get('/catalog-page', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/catalog-page-user', { opp: req.session.opp, name: loggeduser.name});
+        res.render('user/catalog-page-user', { opp: req.session.opp, name: loggeduser.name });
         return;
     }
     res.render('catalog-page');
@@ -394,7 +423,7 @@ router.get('/product-page-cuidado-tats', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/product-page-cuidado-tats-user', { opp: req.session.opp, name: loggeduser.name});
+        res.render('user/product-page-cuidado-tats-user', { opp: req.session.opp, name: loggeduser.name });
         return;
     }
     res.render('product-page-cuidado-tats');
@@ -403,7 +432,7 @@ router.get('/product-page-targeta', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/product-page-targeta-user', { opp: req.session.opp, name: loggeduser.name});
+        res.render('user/product-page-targeta-user', { opp: req.session.opp, name: loggeduser.name });
         return;
     }
     res.render('product-page-targeta');
@@ -421,7 +450,7 @@ router.get('/gallery', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/gallery-user', { opp: req.session.opp, name: loggeduser.name});
+        res.render('user/gallery-user', { opp: req.session.opp, name: loggeduser.name });
         return;
     }
     res.render('gallery');
@@ -430,7 +459,7 @@ router.get('/gallery_Daniel', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/gallery-Daniel-user', { opp: req.session.opp, name: loggeduser.name});
+        res.render('user/gallery-Daniel-user', { opp: req.session.opp, name: loggeduser.name });
         return;
     }
     res.render('gallery_Daniel');
@@ -439,7 +468,7 @@ router.get('/gallery_Marianna', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/gallery-Marianna-user', { opp: req.session.opp, name: loggeduser.name});
+        res.render('user/gallery-Marianna-user', { opp: req.session.opp, name: loggeduser.name });
         return;
     }
     res.render('gallery_Marianna');
@@ -448,7 +477,7 @@ router.get('/gallery_Brigitte', (req, res) => {
     let user = req.session.user;
 
     if (user) {
-        res.render('user/gallery-Brigitte-user', { opp: req.session.opp, name: loggeduser.name});
+        res.render('user/gallery-Brigitte-user', { opp: req.session.opp, name: loggeduser.name });
         return;
     }
     res.render('gallery_Brigitte');
@@ -502,17 +531,27 @@ router.get('/admin/citas/edit/:id', (req, res) => {
         let sqlcita = 'SELECT * FROM lucky_citas WHERE id = ?';
         db.query(sqlcita, [req.params.id], (err, citadata, fields) => {
             if (err) throw err;
-            res.render('user-admin/editCita', { id: req.params.id, fecha: citadata[0].fecha, hora: citadata[0].hora, usuario:citadata[0].usuario, tatuador:citadata[0].tatuador, servicio:citadata[0].servicio, status: citadata[0].status, observaciones: citadata[0].observaciones });
+            res.render('user-admin/editCita', { id: req.params.id, fecha: citadata[0].fecha, hora: citadata[0].hora, usuario: citadata[0].usuario, tatuador: citadata[0].tatuador, servicio: citadata[0].servicio, status: citadata[0].status, observaciones: citadata[0].observaciones });
         })
     } else
         res.redirect('/unauthorized');
 });
 router.post('/admin/citas/edit/:id', (req, res, next) => {
     if (loggeduser.username == 'admin') {
-        let newCitaInput = { fecha: req.body.fecha, hora: req.body.hora, usuario:req.body.usuario, tatuador:req.body.tatuador, servicio:req.body.servicio, status: req.body.status, observaciones: req.body.observaciones };
+        let newCitaInput = { fecha: req.body.fecha, hora: req.body.hora, usuario: req.body.usuario, tatuador: req.body.tatuador, servicio: req.body.servicio, status: req.body.status, observaciones: req.body.observaciones };
         db.query('UPDATE lucky_citas SET ? WHERE id = ?', [newCitaInput, req.params.id], (err, result) => {
             if (err) throw err;
             console.log(result.affectedRows + " appointment updated");
+
+            if (newCitaInput.status == 'No Disponible') {
+                console.log('Enviando mail no disponible');
+            }
+            if (newCitaInput.status == 'Confirmada') {
+                console.log('Enviando mail de aprovación de cita');
+            }
+            if (newCitaInput.status == 'Completada') {
+                console.log('Enviando mail de cita completada');
+            }
         });
         res.redirect('/admin/citas');
     } else

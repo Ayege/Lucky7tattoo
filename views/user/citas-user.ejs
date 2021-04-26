@@ -70,10 +70,11 @@
             <form method="POST" action="reservar">
                 <div class="mb-1"><label class="form-label" for="fecha"
                         style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Fecha</label><input
-                        class="form-control" type="date" id="fecha" name="fecha" placeholder="Fecha" required></div>
-                <div class="mb-1"><label class="form-label" for="hora"
+                        class="form-control" type="date" min="2021-04-26" max="2021-12-31" id="fecha" name="fecha" placeholder="Fecha" required></div>
+                
+                        <div class="mb-1"><label class="form-label" for="hora"
                         style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Hora</label><input
-                        class="form-control" type="time" id="hora" name="hora" placeholder="Hora" required></div>
+                        class="form-control" type="time" min="08:00" max="19:00" step="3600" id="hora"  name="hora" placeholder="Hora" required></div>
                
                 <div class="mb-1">
                     <label class="form-label" for="usuario" style="color: rgb(33, 37, 41);font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Usuario</label>
@@ -100,7 +101,7 @@
                 </div>
                 <div class="mb-1"><label class="form-label" for="observaciones"
                         style="font-size: 20px;font-family: UnifrakturMaguntia, cursive;">Observaciones</label><textarea
-                        class="form-control" id="observaciones" name="observaciones" placeholder="Observaciones" required></textarea></div>
+                        class="form-control" id="observaciones" name="observaciones" placeholder="Observaciones"></textarea></div>
                 <div class="text-center mb-3"><button class="btn btn-primary" type="submit"
                         style="background: rgb(245,209,13);color: rgb(0,0,0);font-family: Montserrat, sans-serif;font-size: 20px;text-align: center;">Reserva Ya!</button>
                 </div>

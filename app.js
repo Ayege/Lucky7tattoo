@@ -5,8 +5,8 @@ const path = require('path');
 const pageRouter = require('./routes/pages');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
-
 
 //app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -20,6 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'ejs');
+app.use(fileUpload());
 
 app.use(session({
     secret: 'LuckyTattoo',
