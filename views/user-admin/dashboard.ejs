@@ -1,5 +1,33 @@
-<h1>Welcome to the Admin Dashboard</h1>
+<!DOCTYPE html>
+<html>
 
-<a href="/admin/users">Usuarios</a> <a href="/admin/citas">Citas</a> <a href="/admin/product">Productos</a> <a href="/">Home</a>
+<head>
+    <title>Lucky7Tattoo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
 
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/admin/dashboard">Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="btn btn-dark nav-link" href="/admin/users">Usuarios</a>
+                    <a class="btn btn-dark nav-link" href="/admin/citas">Citas <span
+                            class="badge bg-secondary">Nueva Cita</span></a>
+                    <a class="btn btn-dark nav-link" href="/admin/product">Productos</a>
+                    <a class="btn btn-dark nav-link" href="/">Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
+    <h1><i class="fa fa-align-center">Dashboard</i></h1>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</html>
