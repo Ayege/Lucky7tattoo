@@ -5,10 +5,8 @@ const path = require('path');
 const pageRouter = require('./routes/pages');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const flash = require('connect-flash');
+const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
-
-const { database } = require('./database/keys');
 
 //app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -22,6 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'ejs');
+app.use(fileUpload());
 
 app.use(session({
     secret: 'LuckyTattoo',
@@ -31,7 +30,6 @@ app.use(session({
         maxAge: 60 * 1000 * 30
     }
 }));
-app.use(flash());
 
 
 app.use('/', pageRouter);
