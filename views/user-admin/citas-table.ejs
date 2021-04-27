@@ -54,8 +54,8 @@
             <td><%= citadata.servicio %></td>
             <td><%= citadata.status %></td>
             <td><%= citadata.observaciones %></td>
-            <td><a href="/admin/citas/edit/<%= citadata.id %>">Edit</a></td>
-            <td><a href="/admin/citas/delete/<%= citadata.id %>">Delete</a></td>
+            <td><a class="btn btn-outline-warning" href="/admin/citas/edit/<%= citadata.id %>">Edit</a></td>
+            <td><a class="btn btn-warning" href="/admin/citas/delete/<%= citadata.id %>">Delete</a></td>
         </tr>
         <% }) %>
         <% } else{ %>

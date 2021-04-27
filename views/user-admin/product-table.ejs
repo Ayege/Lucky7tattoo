@@ -50,8 +50,8 @@
             <td>RD$: <%= productdata.precio %></td>
             <td><%= productdata.descripcion %></td>
             <td><%= productdata.imagen %></td>
-            <td><a href="/admin/product/view/<%= productdata.id %>">View</a></td>
-            <td><a href="/admin/product/delete/<%= productdata.id %>">Delete</a></td>
+            <td><a class="btn btn-outline-warning" href="/admin/product/view/<%= productdata.id %>">View</a></td>
+            <td><a class="btn btn-warning" href="/admin/product/delete/<%= productdata.id %>">Delete</a></td>
         </tr>
         <% }) %>
         <% } else{ %>

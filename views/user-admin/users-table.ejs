@@ -23,7 +23,7 @@
             </div>
         </div>
     </nav>
-    <div class="table-data">
+    <div class="table-data table-responsive">
         <h2><i class="fa fa-align-justify" aria-hidden="true">Tabla Usuarios</i></h2>
         <table class="table" border="1">
             <thead class="table-dark">
@@ -50,8 +50,8 @@
                 <td><%= userdata.phone %></td>
                 <td><%= userdata.email %></td>
                 <td><%= userdata.username %></td>
-                <td><a href="/admin/users/edit/<%= userdata.id %>">Edit</a></td>
-                <td><a href="/admin/users/delete/<%= userdata.id %>">Delete</a></td>
+                <td><a class="btn btn-outline-warning" href="/admin/users/edit/<%= userdata.id %>">Edit</a></td>
+                <td><a class="btn btn-warning" href="/admin/users/delete/<%= userdata.id %>">Delete</a></td>
             </tr>
             <% }) %>
             <% } else{ %>
