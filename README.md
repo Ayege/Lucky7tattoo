@@ -25,3 +25,7 @@ Also need to add a 'uploaded' folder inside your public folder.
 npm run dev
 
 And you are good to go just open your browser at http://localhost:3000
+
+And you can always visit:
+
+https://lucky7.bss.design/
